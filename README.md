@@ -38,3 +38,4 @@ git clone https://github.com/hedigardi/hedi-gardi.git
 cd hedi-gardi
 
 # Open index.html in your browser or use a local server
+```
