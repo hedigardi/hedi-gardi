@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Hedi Gardi | Blockchain & Fullstack Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Hedi Gardi - Blockchain & Fullstack Developer. Explore projects, code, and insights in blockchain technology, web development, and fullstack solutions." />
+  <meta name="keywords" content="Hedi Gardi, Blockchain Developer, Fullstack Developer, Software Engineer, Web Development, Bitcoin, Ethereum, Smart Contracts, GitHub Portfolio" />
+  <meta name="author" content="Hedi Gardi" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hedi Gardi | Blockchain & Fullstack Developer" />
+  <meta property="og:description" content="Discover the portfolio and projects of Hedi Gardi, a Blockchain & Fullstack Developer." />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hedi Gardi | Blockchain & Fullstack Developer" />
+  <meta name="twitter:description" content="Discover the portfolio and projects of Hedi Gardi, a Blockchain & Fullstack Developer." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./assets/css/images/favicon.ico" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css" />
+  </noscript>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div id="bg" aria-hidden="true"></div>
+    <div id="overlay" aria-hidden="true"></div>
+
+    <main id="main">
+      <!-- Header -->
+      <header id="header">
+        <h1>Hedi Gardi</h1>
+        <p>Blockchain &bull; Fullstack Developer</p>
+
+        <nav aria-label="Social Links">
+          <ul>
+            <li>
+              <a href="https://www.linkedin.com/in/hedigardi/" 
+                 class="icon brands fa-linkedin" 
+                 target="_blank" rel="noopener noreferrer">
+                <span class="label">LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/hedigardi/" 
+                 class="icon brands fa-github" 
+                 target="_blank" rel="noopener noreferrer">
+                <span class="label">GitHub</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hedigardi@hotmail.com" 
+                 class="icon solid fa-envelope">
+                <span class="label">Email</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <p>&copy; <span id="year"></span> Hedi Gardi</p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Remove preload class after page load
+    window.addEventListener("load", () => {
+      document.body.classList.remove("is-preload");
+    });
+
+    // Prevent scrolling on touch devices (if intended)
+    window.addEventListener("touchmove", e => e.preventDefault(), { passive: false });
+
+    // Reset scroll on orientation change
+    window.addEventListener("orientationchange", () => {
+      window.scrollTo(0, 0);
+    });
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
