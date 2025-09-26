@@ -39,7 +39,7 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="./assets/css/images/favicon.ico" />
+    <link rel="icon" type="image/png" href="./assets/images/favicon.ico" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -100,24 +100,6 @@
     </div>
 
     <!-- Scripts -->
-    <script>
-      // Remove preload class after page load
-      window.addEventListener("load", () => {
-        document.body.classList.remove("is-preload");
-      });
-
-      // Prevent scrolling on touch devices (if intended)
-      window.addEventListener("touchmove", (e) => e.preventDefault(), {
-        passive: false,
-      });
-
-      // Reset scroll on orientation change
-      window.addEventListener("orientationchange", () => {
-        window.scrollTo(0, 0);
-      });
-
-      // Set current year in footer
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
