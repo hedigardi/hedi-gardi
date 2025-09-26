@@ -8,7 +8,7 @@ Visit the website: [https://hedigardi.me](https://hedigardi.me)
 
 ## 📖 About
 
-This is a personal portfolio website designed to present professional information, skills, and contact details in an elegant and accessible manner. The site features a minimalist design with smooth animations and full responsiveness.
+This is a personal portfolio website. It's a single-page website with a focus on minimalist design, smooth animations, and responsive layout.
 
 ## ✨ Features
 
