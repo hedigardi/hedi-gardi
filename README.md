@@ -4,7 +4,7 @@ A clean, modern, and responsive personal portfolio website.
 
 ## 🌐 Live Demo
 
-Visit the website: [https://hedigardi.me](https://hedigardi.me)
+Visit the website: [https://hedigardi.com](https://hedigardi.com)
 
 ## 📖 About
 
@@ -39,14 +39,3 @@ cd hedi-gardi
 
 # Open index.html in your browser or use a local server
 ```
-
-## Netlify Deploy
-
-This project is a static site and does not use `package.json`, `yarn`, or a build step.
-
-Use these settings in Netlify:
-
-- Build command: none, or leave it empty
-- Publish directory: `.`
-
-The repository also includes `netlify.toml` so Netlify can publish the project root directly.
