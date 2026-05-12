@@ -1,0 +1,11 @@
+# robots.txt for hedigardi.com
+# Allow all crawlers to access the site
+
+User-agent: *
+Allow: /
+
+# Specific sitemap location
+Sitemap: https://hedigardi.com/sitemap.xml
+
+# Crawl delay (optional, in seconds)
+Crawl-delay: 1
