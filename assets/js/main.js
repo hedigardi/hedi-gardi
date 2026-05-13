@@ -27,16 +27,12 @@ function initApp() {
  */
 function handlePageLoad() {
   document.body.classList.remove("is-preload");
-  console.log("Page loaded successfully");
 }
 
 /**
  * Set up all event listeners
  */
 function setupEventListeners() {
-  // Prevent scrolling on touch devices (if intended)
-  window.addEventListener("touchmove", handleTouchMove, { passive: false });
-
   // Reset scroll on orientation change
   window.addEventListener("orientationchange", handleOrientationChange);
 
@@ -51,15 +47,10 @@ function initDynamicContent() {
   // Set current year in footer
   setCurrentYear();
 
-  // Additional dynamic content can be added here
-}
+  // Enable profile image lightbox interaction
+  initProfileLightbox();
 
-/**
- * Handle touch move events to prevent scrolling
- * @param {Event} e - Touch move event
- */
-function handleTouchMove(e) {
-  e.preventDefault();
+  // Additional dynamic content can be added here
 }
 
 /**
@@ -67,7 +58,6 @@ function handleTouchMove(e) {
  */
 function handleOrientationChange() {
   window.scrollTo(0, 0);
-  console.log("Orientation changed, scroll reset");
 }
 
 /**
@@ -75,7 +65,6 @@ function handleOrientationChange() {
  */
 function handleResize() {
   // Add any resize-specific logic here
-  console.log("Window resized");
 }
 
 /**
@@ -86,6 +75,57 @@ function setCurrentYear() {
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
+}
+
+/**
+ * Initialize click-to-enlarge behavior for profile image
+ */
+function initProfileLightbox() {
+  const profileImage = document.getElementById("profileImage");
+  const lightbox = document.getElementById("imageLightbox");
+  const closeButton = document.getElementById("lightboxClose");
+
+  if (!profileImage || !lightbox || !closeButton) {
+    return;
+  }
+
+  const openLightbox = function () {
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeLightbox = function () {
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "hidden";
+  };
+
+  profileImage.addEventListener("click", openLightbox);
+  profileImage.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLightbox();
+    }
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", function (event) {
+    const target = event.target;
+    if (
+      target instanceof HTMLElement &&
+      target.dataset.closeLightbox === "true"
+    ) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && lightbox.classList.contains("is-open")) {
+      closeLightbox();
+    }
+  });
 }
 
 /**
@@ -102,14 +142,4 @@ function isInViewport(element) {
       (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
-}
-
-// Export functions for potential future modular use
-if (typeof module !== "undefined" && module.exports) {
-  module.exports = {
-    initApp,
-    handlePageLoad,
-    setCurrentYear,
-    isInViewport,
-  };
 }
