@@ -2,7 +2,7 @@
 
 Minimal personal portfolio and digital identity for hedigardi.com.
 
-## Live Demo
+## Website
 
 https://hedigardi.com
 
@@ -12,6 +12,15 @@ https://hedigardi.com
 - CSS3
 - Vanilla JavaScript
 - Font Awesome icons
+
+## Features
+
+- Minimal responsive design
+- SEO optimized metadata
+- Open Graph support
+- Accessible navigation
+- Image lightbox
+- Netlify-ready deployment
 
 ## Project Structure
 
@@ -33,3 +42,7 @@ python -m http.server 8000
 ```
 
 4. Open `http://localhost:8000`
+
+## License
+
+Personal portfolio project for hedigardi.com.
