@@ -86,7 +86,17 @@ function scrollToId(id: string): void {
 
 export default function App() {
   const [paletteOpen, setPaletteOpen] = useState(false);
-  const [lightMode, setLightMode] = useState(false);
+  const [lightMode, setLightMode] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
+
+    try {
+      return window.localStorage.getItem("theme") === "light";
+    } catch {
+      return false;
+    }
+  });
   const [fees, setFees] = useState<FeeData | null>(null);
   const [imageOpen, setImageOpen] = useState(false);
   const [imageClosing, setImageClosing] = useState(false);
@@ -105,6 +115,10 @@ export default function App() {
 
   useEffect(() => {
     document.body.dataset.theme = lightMode ? "light" : "dark";
+
+    try {
+      window.localStorage.setItem("theme", lightMode ? "light" : "dark");
+    } catch {}
   }, [lightMode]);
 
   useEffect(() => {
