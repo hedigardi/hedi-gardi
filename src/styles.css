@@ -257,6 +257,10 @@ a {
   font-size: 0.75rem;
 }
 
+.hero__eyebrow {
+  font-size: 0.92rem;
+}
+
 .hero h1 {
   margin: 0.4rem 0 1rem;
   font-size: clamp(2rem, 5.5vw, 4rem);
@@ -334,8 +338,16 @@ a {
   animation: rise 420ms ease-out both;
 }
 
+.panel__header {
+  margin: 0;
+}
+
+.panel__header .panel__eyebrow {
+  margin: 0;
+}
+
 .panel__header h2 {
-  margin: 0.3rem 0 0;
+  margin: 0.2rem 0 0;
   font-size: clamp(1.35rem, 3.1vw, 2rem);
 }
 
