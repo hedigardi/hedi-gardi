@@ -154,9 +154,7 @@ export default function App() {
         }
         const data = (await response.json()) as FeeData;
         setFees(data);
-      } catch {
-        // Ignore network failures to keep the page resilient.
-      }
+      } catch {}
     };
 
     fetchFees();
@@ -243,10 +241,10 @@ export default function App() {
             />
           </button>
           <p className="hero__eyebrow">Hedi Gardi</p>
-          <h1>Fullstack + Blockchain Developer</h1>
+          <h1>Bitcoin, Web3 & Fullstack Developer</h1>
           <p className="hero__lead">
-            I build practical digital products at the intersection of Bitcoin,
-            Web3, and clean user experience.
+            I build secure TypeScript products at the intersection of Bitcoin,
+            Web3, blockchain, and clean user experience.
           </p>
           <p className="hero__hint">Press Ctrl/Cmd + K for commands.</p>
           <div className="hero__links">
@@ -278,15 +276,21 @@ export default function App() {
         <section id="focus" className="panel">
           <header className="panel__header">
             <p className="panel__eyebrow">Focus</p>
-            <h2>Building trustworthy products for modern finance</h2>
+            <h2>
+              Building trustworthy software for Bitcoin and modern finance
+            </h2>
           </header>
           <ul className="focus-list">
             <li>
-              Security-first architecture for blockchain-enabled applications.
+              Security-first engineering for Bitcoin, blockchain, and Web3
+              applications.
             </li>
-            <li>Clear UX for technically complex workflows and data.</li>
             <li>
-              Fast fullstack delivery with maintainable TypeScript systems.
+              Clear UX for technically complex financial workflows and data.
+            </li>
+            <li>
+              Fast fullstack delivery with maintainable TypeScript, React, and
+              Next.js systems.
             </li>
           </ul>
         </section>

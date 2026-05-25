@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { identityProof } from "../data/identityProof";
 
 type VerifyState = "idle" | "verifying" | "verified" | "failed";
@@ -12,16 +12,24 @@ function base64ToArrayBuffer(base64: string): ArrayBuffer {
   return bytes.buffer;
 }
 
+async function waitForMinimumDuration(startedAt: number, minVisibleMs: number) {
+  const elapsed = performance.now() - startedAt;
+  if (elapsed >= minVisibleMs) {
+    return;
+  }
+
+  await new Promise((resolve) =>
+    window.setTimeout(resolve, minVisibleMs - elapsed),
+  );
+}
+
 export default function IdentityProof() {
   const [state, setState] = useState<VerifyState>("idle");
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">(
     "idle",
   );
   const isVerifying = state === "verifying";
-
-  const shortFingerprint = useMemo(() => {
-    return `${identityProof.publicKeyJwk.x.slice(0, 14)}...${identityProof.publicKeyJwk.y.slice(-10)}`;
-  }, []);
+  const shortFingerprint = `${identityProof.publicKeyJwk.x.slice(0, 14)}...${identityProof.publicKeyJwk.y.slice(-10)}`;
 
   const verifyProof = async () => {
     const minVisibleMs = 500;
@@ -55,21 +63,11 @@ export default function IdentityProof() {
         payload,
       );
 
-      const elapsed = performance.now() - startedAt;
-      if (elapsed < minVisibleMs) {
-        await new Promise((resolve) =>
-          window.setTimeout(resolve, minVisibleMs - elapsed),
-        );
-      }
+      await waitForMinimumDuration(startedAt, minVisibleMs);
 
       setState(verified ? "verified" : "failed");
     } catch {
-      const elapsed = performance.now() - startedAt;
-      if (elapsed < minVisibleMs) {
-        await new Promise((resolve) =>
-          window.setTimeout(resolve, minVisibleMs - elapsed),
-        );
-      }
+      await waitForMinimumDuration(startedAt, minVisibleMs);
       setState("failed");
     }
   };

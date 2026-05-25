@@ -1,4 +1,4 @@
-import { DragEvent, useMemo, useState } from "react";
+import { DragEvent, useState } from "react";
 
 type HashState = {
   fileName: string;
@@ -27,12 +27,6 @@ export default function HashLab() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<HashState | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  const placeholder = useMemo(() => {
-    return loading
-      ? "Hashing file locally..."
-      : "Drop a file here or choose one manually.";
-  }, [loading]);
 
   const handleFile = async (file: File | null) => {
     if (!file) {
@@ -85,7 +79,11 @@ export default function HashLab() {
             await handleFile(event.target.files?.[0] ?? null);
           }}
         />
-        <span>{placeholder}</span>
+        <span>
+          {loading
+            ? "Hashing file locally..."
+            : "Drop a file here or choose one manually."}
+        </span>
       </label>
 
       {error ? <p className="lab__error">{error}</p> : null}
