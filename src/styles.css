@@ -110,7 +110,7 @@ a {
 }
 
 .hero {
-  padding: 4rem 0 2rem;
+  padding: 3.35rem 0 2rem;
   border-bottom: 1px solid var(--line);
   animation: rise 420ms ease-out both;
 }
