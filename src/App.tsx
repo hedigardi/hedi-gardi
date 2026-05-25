@@ -78,6 +78,28 @@ function SunIcon() {
   );
 }
 
+function CommandIcon() {
+  return (
+    <svg className="hero__hintIcon" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M7 5a3 3 0 0 1 3 3v1h4V8a3 3 0 1 1 6 0 3 3 0 0 1-3 3h-1v2h1a3 3 0 1 1-3 3v-1h-4v1a3 3 0 1 1-6 0 3 3 0 0 1 3-3h1v-2H7a3 3 0 1 1 0-6Zm0 2a1 1 0 1 0 0 2h3V8a1 1 0 0 0-1-1H7Zm10 0a1 1 0 0 0-1 1v1h1a1 1 0 1 0 0-2Zm-7 4v2h4v-2h-4Zm-3 4a1 1 0 1 0 0 2h2a1 1 0 0 0 1-1v-1H7Zm9 0v1a1 1 0 1 0 1-1h-1Z"
+      />
+    </svg>
+  );
+}
+
+function ArrowUpIcon() {
+  return (
+    <svg className="back-to-top__icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M12 4.5a1 1 0 0 1 .71.29l6 6a1 1 0 0 1-1.42 1.42L13 8.91V19a1 1 0 1 1-2 0V8.91l-4.29 4.3a1 1 0 0 1-1.42-1.42l6-6A1 1 0 0 1 12 4.5Z"
+      />
+    </svg>
+  );
+}
+
 function scrollToId(id: string): void {
   document
     .getElementById(id)
@@ -260,7 +282,17 @@ export default function App() {
             I build secure TypeScript products at the intersection of Bitcoin,
             Web3, blockchain, and clean user experience.
           </p>
-          <p className="hero__hint">Press Ctrl/Cmd + K for commands.</p>
+          <div className="hero__hintRow">
+            <p className="hero__hint">Press Ctrl/Cmd + K for commands.</p>
+            <button
+              className="hero__hintButton"
+              type="button"
+              aria-label="Open command palette"
+              onClick={() => setPaletteOpen(true)}
+            >
+              <CommandIcon />
+            </button>
+          </div>
           <div className="hero__links">
             <a
               className="link-with-icon"
@@ -416,6 +448,15 @@ export default function App() {
           </figure>
         </div>
       ) : null}
+
+      <button
+        className="back-to-top"
+        type="button"
+        aria-label="Back to top"
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      >
+        <ArrowUpIcon />
+      </button>
 
       <CommandPalette
         isOpen={paletteOpen}
