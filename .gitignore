@@ -146,7 +146,6 @@ out
 
 # gatsby files
 .cache/
-public
 
 # vuepress build output
 .vuepress/dist
@@ -187,7 +186,7 @@ Thumbs.db
 # Build directories
 dist/
 build/
-public/
+*.tsbuildinfo
 
 # Temporary files
 *.tmp
