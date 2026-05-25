@@ -104,7 +104,8 @@ export default function IdentityProof() {
           <strong>Message:</strong> {identityProof.message}
         </p>
         <p>
-          <strong>Key fingerprint:</strong> {shortFingerprint}
+          <strong>Key fingerprint:</strong>{" "}
+          <span className="identity__fingerprint">{shortFingerprint}</span>
         </p>
         <p>
           <strong>Status:</strong>{" "}

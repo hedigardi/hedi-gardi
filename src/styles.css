@@ -496,6 +496,11 @@ a {
   margin: 0.45rem 0;
 }
 
+.identity__fingerprint {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .identity__status {
   font-family: "IBM Plex Mono", monospace;
 }
@@ -573,6 +578,19 @@ a {
 .identity__actions .identity__button {
   margin-top: 0;
   white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .identity__actions {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: visible;
+  }
+
+  .identity__actions .identity__button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .identity__copy-feedback {

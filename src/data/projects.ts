@@ -14,7 +14,7 @@ export const projects: Project[] = [
       "A practical education platform helping Nordic users understand and adopt Bitcoin with confidence.",
     stack: ["Next.js", "TypeScript", "Tailwind", "Contentful"],
     status: "Live",
-    githubUrl: "https://github.com/hedigardi",
+    githubUrl: "https://github.com/hedigardi/bitcoinstart",
     demoUrl: "https://hedigardi.com",
   },
   {
@@ -23,7 +23,7 @@ export const projects: Project[] = [
       "Digital receipt verification with browser-side hashing and web3-friendly validation flows.",
     stack: ["Next.js", "Viem", "Wagmi", "Account Abstraction"],
     status: "Live",
-    githubUrl: "https://github.com/hedigardi",
+    githubUrl: "https://github.com/hedigardi/receiptuary",
     demoUrl: "https://receiptuary.hedigardi.com/",
   },
   {
@@ -32,7 +32,7 @@ export const projects: Project[] = [
       "A transparent on-chain voting application with a clean UX and robust smart contract integration.",
     stack: ["Solidity", "Hardhat", "React", "Ethers"],
     status: "Live",
-    githubUrl: "https://github.com/hedigardi",
+    githubUrl: "https://github.com/hedigardi/voting-dapp",
     demoUrl: "https://votingdapp.hedigardi.com/",
   },
   {
