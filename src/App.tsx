@@ -277,7 +277,7 @@ export default function App() {
             />
           </button>
           <p className="hero__eyebrow">Hedi Gardi</p>
-          <h1>Bitcoin, Web3 & Fullstack Developer</h1>
+          <h1 className="hero__title">Bitcoin, Web3 & Fullstack Developer</h1>
           <p className="hero__lead">
             I build secure TypeScript products at the intersection of Bitcoin,
             Web3, blockchain, and clean user experience.

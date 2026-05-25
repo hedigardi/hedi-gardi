@@ -261,10 +261,12 @@ a {
   font-size: 0.92rem;
 }
 
-.hero h1 {
+.hero__title {
   margin: 0.4rem 0 1rem;
-  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-size: clamp(0.95rem, 4.85vw, 4rem);
   line-height: 1.1;
+  letter-spacing: -0.01em;
+  white-space: nowrap !important;
 }
 
 .hero__lead {
