@@ -1,6 +1,6 @@
-# Personal Portfolio Website
+# Hedi Gardi Portfolio (React + TypeScript)
 
-Minimal personal portfolio and digital identity for hedigardi.com.
+Modern portfolio and digital identity for hedigardi.com, rebuilt with React and TypeScript.
 
 ## Website
 
@@ -8,40 +8,51 @@ https://hedigardi.com
 
 ## Tech Stack
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Font Awesome icons
+- React 18
+- TypeScript
+- Vite
+- Vanilla CSS
 
 ## Features
 
-- Minimal responsive design
-- SEO optimized metadata
-- Open Graph support
-- Accessible navigation
-- Image lightbox
-- Netlify-ready deployment
+- Minimalist modern design with responsive layout
+- Command palette (Ctrl/Cmd + K) for navigation and quick actions
+- Project portfolio cards with stack tags and status indicators
+- Local file hashing lab (SHA-256 via browser crypto API)
+- Live Bitcoin fee ticker (mempool.space API)
+- SEO metadata + Open Graph
+- Netlify deployment setup
 
 ## Project Structure
 
-- `index.html` - Main markup
-- `assets/css/main.css` - Theme + custom styling
-- `assets/js/main.js` - Page behavior and image lightbox logic
-- `assets/images/` - Background, overlay assets, portrait, OG image, icons
-- `netlify.toml` - Netlify static deploy configuration
-- `robots.txt` and `sitemap.xml` - Basic indexing support
+- `src/App.tsx` - Main portfolio page layout
+- `src/components/CommandPalette.tsx` - Keyboard-driven command menu
+- `src/components/HashLab.tsx` - Local file hashing feature
+- `src/data/projects.ts` - Portfolio project data
+- `src/styles.css` - Complete visual theme and responsive styles
+- `public/assets/images/` - Favicons, OG image, and image assets
+- `public/robots.txt` and `public/sitemap.xml` - Search indexing files
+- `netlify.toml` - Build and redirect configuration
 
 ## Local Development
 
-1. Clone repository
-2. Open project folder
-3. Start with a simple local server, for example:
+1. Install dependencies:
 
 ```powershell
-python -m http.server 8000
+npm install
 ```
 
-4. Open `http://localhost:8000`
+2. Start development server:
+
+```powershell
+npm run dev
+```
+
+3. Build for production:
+
+```powershell
+npm run build
+```
 
 ## License
 
