@@ -15,14 +15,14 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Tailwind", "Contentful"],
     status: "Live",
     githubUrl: "https://github.com/hedigardi/bitcoinstart",
-    demoUrl: "https://hedigardi.com",
+    demoUrl: "https://bitcoinstart.no",
   },
   {
     name: "Receiptuary",
     description:
       "Digital receipt verification with browser-side hashing and web3-friendly validation flows.",
     stack: ["Next.js", "Viem", "Wagmi", "Account Abstraction"],
-    status: "Live",
+    status: "In Development",
     githubUrl: "https://github.com/hedigardi/receiptuary",
     demoUrl: "https://receiptuary.hedigardi.com/",
   },
