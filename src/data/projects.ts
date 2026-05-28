@@ -22,7 +22,7 @@ export const projects: Project[] = [
     description:
       "Digital receipt verification with browser-side hashing and web3-friendly validation flows.",
     stack: ["Next.js", "Viem", "Wagmi", "Account Abstraction"],
-    status: "In Development",
+    status: "Live",
     githubUrl: "https://github.com/hedigardi/receiptuary",
     demoUrl: "https://receiptuary.hedigardi.com/",
   },
