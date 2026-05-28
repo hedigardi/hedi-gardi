@@ -351,6 +351,7 @@ a {
 
 .hero__links a,
 .project-card__links a,
+.project-card__links .link-with-icon--disabled,
 .footer a {
   text-decoration: none;
   border: 1px solid var(--line);
@@ -381,6 +382,11 @@ a {
   border-color: var(--accent);
   background: var(--accent-soft);
   transform: translateY(-1px);
+}
+
+.project-card__links .link-with-icon--disabled {
+  opacity: 0.68;
+  cursor: not-allowed;
 }
 
 .panel {

@@ -367,15 +367,26 @@ export default function App() {
                   ))}
                 </div>
                 <div className="project-card__links">
-                  <a
-                    className="link-with-icon"
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <GitHubIcon />
-                    <span>GitHub</span>
-                  </a>
+                  {project.githubUrl ? (
+                    <a
+                      className="link-with-icon"
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <GitHubIcon />
+                      <span>GitHub</span>
+                    </a>
+                  ) : (
+                    <span
+                      className="link-with-icon link-with-icon--disabled"
+                      aria-disabled="true"
+                      title="GitHub link coming soon"
+                    >
+                      <GitHubIcon />
+                      <span>GitHub</span>
+                    </span>
+                  )}
                   {project.demoUrl ? (
                     <a
                       className="link-with-icon"
@@ -386,7 +397,16 @@ export default function App() {
                       <ExternalLinkIcon />
                       <span>Live Demo</span>
                     </a>
-                  ) : null}
+                  ) : (
+                    <span
+                      className="link-with-icon link-with-icon--disabled"
+                      aria-disabled="true"
+                      title="Live demo coming soon"
+                    >
+                      <ExternalLinkIcon />
+                      <span>Live Demo</span>
+                    </span>
+                  )}
                 </div>
               </article>
             ))}

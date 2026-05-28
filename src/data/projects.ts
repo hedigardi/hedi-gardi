@@ -3,19 +3,17 @@ export type Project = {
   description: string;
   stack: string[];
   status: "Live" | "In Development" | "Archived";
-  githubUrl: string;
+  githubUrl?: string;
   demoUrl?: string;
 };
 
 export const projects: Project[] = [
   {
-    name: "BitcoinStart Nordics",
+    name: "PledgeChain",
     description:
-      "A practical education platform helping Nordic users understand and adopt Bitcoin with confidence.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "Contentful"],
-    status: "Live",
-    githubUrl: "https://github.com/hedigardi/bitcoinstart",
-    demoUrl: "https://bitcoinstart.no",
+      "A Web3 micro-crowdfunding platform where creators launch campaigns quickly, donors pledge USDC, and escrow logic enables secure fund claims or refunds.",
+    stack: ["Next.js", "TypeScript", "Solidity", "Hardhat"],
+    status: "In Development",
   },
   {
     name: "Receiptuary",
@@ -27,13 +25,13 @@ export const projects: Project[] = [
     demoUrl: "https://receiptuary.hedigardi.com/",
   },
   {
-    name: "Voting DApp",
+    name: "BitcoinStart Nordics",
     description:
-      "A transparent on-chain voting application with a clean UX and robust smart contract integration.",
-    stack: ["Solidity", "Hardhat", "React", "Ethers"],
+      "A practical education platform helping Nordic users understand and adopt Bitcoin with confidence.",
+    stack: ["Next.js", "TypeScript", "Tailwind", "Contentful"],
     status: "Live",
-    githubUrl: "https://github.com/hedigardi/voting-dapp",
-    demoUrl: "https://votingdapp.hedigardi.com/",
+    githubUrl: "https://github.com/hedigardi/bitcoinstart",
+    demoUrl: "https://bitcoinstart.no",
   },
   {
     name: "Block & Learn",
@@ -51,5 +49,14 @@ export const projects: Project[] = [
     status: "Live",
     githubUrl: "https://github.com/hedigardi/blockandlearn",
     demoUrl: "https://blockandlearn.com/",
+  },
+  {
+    name: "Voting DApp",
+    description:
+      "A transparent on-chain voting application with a clean UX and robust smart contract integration.",
+    stack: ["Solidity", "Hardhat", "React", "Ethers"],
+    status: "Live",
+    githubUrl: "https://github.com/hedigardi/voting-dapp",
+    demoUrl: "https://votingdapp.hedigardi.com/",
   },
 ];
