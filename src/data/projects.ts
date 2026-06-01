@@ -16,6 +16,13 @@ export const projects: Project[] = [
     status: "In Development",
   },
   {
+    name: "Decentratix",
+    description:
+      "A production-minded Web3 ticketing platform concept that combines capped secondary pricing, automated organizer royalties, and cryptographically signed dynamic QR verification to enhance fairness, transparency, and event-entry security.",
+    stack: ["React", "Next.js", "TypeScript", "Solidity", "Wagmi", "Hardhat"],
+    status: "In Development",
+  },
+  {
     name: "Receiptuary",
     description:
       "Digital receipt verification with browser-side hashing and web3-friendly validation flows.",
