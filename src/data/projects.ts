@@ -9,18 +9,13 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "PledgeChain",
-    description:
-      "A Web3 micro-crowdfunding platform where creators launch campaigns quickly, donors pledge USDC, and escrow logic enables secure fund claims or refunds.",
-    stack: ["Next.js", "TypeScript", "Solidity", "Hardhat"],
-    status: "In Development",
-  },
-  {
     name: "Decentratix",
     description:
       "A production-minded Web3 ticketing platform concept that combines capped secondary pricing, automated organizer royalties, and cryptographically signed dynamic QR verification to enhance fairness, transparency, and event-entry security.",
     stack: ["React", "Next.js", "TypeScript", "Solidity", "Wagmi", "Hardhat"],
-    status: "In Development",
+    status: "Live",
+    githubUrl: "https://github.com/hedigardi/decentratix",
+    demoUrl: "https://decentratix.hedigardi.com/",
   },
   {
     name: "Receiptuary",
