@@ -9,6 +9,15 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "TxVeto",
+    description:
+      "An in-process safety guard for AI agents that enforces budget ceilings, breaks runaway tool-call loops, and applies MCP policy checks before expensive steps execute.",
+    stack: ["Python", "MCP", "JSON-RPC", "Pytest", "TypeScript"],
+    status: "In Development",
+    githubUrl: "https://github.com/hedigardi/TxVeto",
+    demoUrl: "https://txveto.hedigardi.com",
+  },
+  {
     name: "Decentratix",
     description:
       "A production-minded Web3 ticketing platform concept that combines capped secondary pricing, automated organizer royalties, and cryptographically signed dynamic QR verification to enhance fairness, transparency, and event-entry security.",
