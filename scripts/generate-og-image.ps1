@@ -1,8 +1,8 @@
 param(
   [string]$BackgroundPath = "public/assets/images/bg.jpg",
   [string]$OutputPath = "public/assets/images/og-image-1200x630.jpg",
-  [string]$Title = "Hedi Gardi",
-  [string]$Subtitle = "Blockchain & Fullstack Developer",
+  [string]$Title = "HEDI GARDI",
+  [string]$Subtitle = "Bitcoin, Web3 & Fullstack Developer",
   [int]$Width = 1200,
   [int]$Height = 630,
   [int]$Quality = 88
