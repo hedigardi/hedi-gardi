@@ -5,7 +5,7 @@ param(
   [string]$Subtitle = "Bitcoin, Web3 & Fullstack Developer",
   [int]$Width = 1200,
   [int]$Height = 630,
-  [int]$Quality = 88
+  [int]$Quality = 100
 )
 
 Set-StrictMode -Version Latest
