@@ -12,7 +12,15 @@ export const projects: Project[] = [
     name: "TxVeto",
     description:
       "An in-process safety guard for AI agents that enforces budget ceilings, breaks runaway tool-call loops, and applies MCP policy checks before expensive steps execute.",
-    stack: ["Python", "MCP", "JSON-RPC", "Pytest", "TypeScript"],
+    stack: [
+      "Python",
+      "Solidity",
+      "JavaScript",
+      "TypeScript",
+      "MCP",
+      "JSON-RPC",
+      "Pytest",
+    ],
     status: "In Development",
     githubUrl: "https://github.com/hedigardi/TxVeto",
     demoUrl: "https://txveto.hedigardi.com",
