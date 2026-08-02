@@ -9,6 +9,22 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "FjordSync",
+    description:
+      "A SaaS converter that transforms Stripe balance transaction CSV exports into import-ready accounting files for Norwegian ERP workflows like Fiken and Tripletex.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Prisma",
+      "MySQL",
+      "Vitest",
+      "Playwright",
+    ],
+    status: "In Development",
+    demoUrl: "https://fjordsync.hedigardi.com/",
+  },
+  {
     name: "TxVeto",
     description:
       "An in-process safety guard for AI agents that enforces budget ceilings, breaks runaway tool-call loops, and applies MCP policy checks before expensive steps execute.",
