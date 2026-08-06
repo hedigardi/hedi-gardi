@@ -1,5 +1,5 @@
 param(
-  [string]$BackgroundPath = "public/assets/images/bg.jpg",
+  [string]$BackgroundPath = "scripts/assets/bg.jpg",
   [string]$OutputPath = "public/assets/images/og-image-1200x630.jpg",
   [string]$Title = "HEDI GARDI",
   [string]$Subtitle = "Bitcoin, Web3 & Fullstack Developer",

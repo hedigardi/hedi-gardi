@@ -1,4 +1,12 @@
-import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type FormEvent,
+  type KeyboardEvent as ReactKeyboardEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { useFocusTrap } from "../hooks/useFocusTrap";
 
 export type PaletteAction = {
   id: string;
@@ -19,11 +27,16 @@ export default function CommandPalette({
   actions,
 }: CommandPaletteProps) {
   const [query, setQuery] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useFocusTrap(panelRef, isOpen);
 
   useEffect(() => {
     if (isOpen) {
       setQuery("");
+      setActiveIndex(0);
       requestAnimationFrame(() => inputRef.current?.focus());
     }
   }, [isOpen]);
@@ -40,14 +53,48 @@ export default function CommandPalette({
     });
   }, [actions, query]);
 
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const first = filtered[0];
-    if (!first) {
+  // Clamp the cursor to the visible list so it never points at a hidden item
+  // when typing shrinks the results.
+  const safeIndex = Math.min(activeIndex, Math.max(filtered.length - 1, 0));
+  const activeAction = filtered[safeIndex];
+  const activeId = activeAction
+    ? `palette-option-${activeAction.id}`
+    : undefined;
+
+  const runAction = (index: number) => {
+    const action = filtered[index];
+    if (!action) {
       return;
     }
-    first.run();
+    action.run();
     onClose();
+  };
+
+  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    runAction(safeIndex);
+  };
+
+  const onInputKeyDown = (event: ReactKeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveIndex((current) =>
+        filtered.length ? (current + 1) % filtered.length : 0,
+      );
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveIndex((current) =>
+        filtered.length
+          ? (current - 1 + filtered.length) % filtered.length
+          : 0,
+      );
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      setActiveIndex(0);
+    } else if (event.key === "End") {
+      event.preventDefault();
+      setActiveIndex(Math.max(filtered.length - 1, 0));
+    }
   };
 
   if (!isOpen) {
@@ -67,32 +114,41 @@ export default function CommandPalette({
         aria-label="Close command palette"
         onClick={onClose}
       />
-      <div className="palette__panel">
+      <div className="palette__panel" ref={panelRef}>
         <form onSubmit={onSubmit}>
           <input
             ref={inputRef}
             className="palette__input"
             type="text"
             placeholder="Type a command..."
+            role="combobox"
+            aria-expanded="true"
+            aria-controls="palette-list"
+            aria-activedescendant={activeId}
+            autoComplete="off"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
+            onKeyDown={onInputKeyDown}
           />
         </form>
         <ul
+          id="palette-list"
           className="palette__list"
           role="listbox"
           aria-label="Available commands"
         >
           {filtered.length ? (
-            filtered.map((action) => (
+            filtered.map((action, index) => (
               <li key={action.id}>
                 <button
-                  className="palette__item"
+                  id={`palette-option-${action.id}`}
+                  className={`palette__item${index === safeIndex ? " palette__item--active" : ""}`}
                   type="button"
-                  onClick={() => {
-                    action.run();
-                    onClose();
-                  }}
+                  role="option"
+                  aria-selected={index === safeIndex}
+                  tabIndex={-1}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onClick={() => runAction(index)}
                 >
                   <span>{action.label}</span>
                   {action.hint ? <small>{action.hint}</small> : null}
@@ -100,7 +156,9 @@ export default function CommandPalette({
               </li>
             ))
           ) : (
-            <li className="palette__empty">No command found.</li>
+            <li className="palette__empty" role="option" aria-disabled="true">
+              No command found.
+            </li>
           )}
         </ul>
       </div>
