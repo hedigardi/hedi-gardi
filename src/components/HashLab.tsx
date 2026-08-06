@@ -1,4 +1,4 @@
-import { DragEvent, useState } from "react";
+import { type DragEvent, useRef, useState } from "react";
 
 type HashState = {
   fileName: string;
@@ -27,22 +27,32 @@ export default function HashLab() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<HashState | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const requestIdRef = useRef(0);
 
   const handleFile = async (file: File | null) => {
     if (!file) {
       return;
     }
 
+    const requestId = ++requestIdRef.current;
     setLoading(true);
     setError(null);
 
     try {
       const hashResult = await digestSha256(file);
+      if (requestId !== requestIdRef.current) {
+        return; // A newer file was selected — ignore this stale result.
+      }
       setResult(hashResult);
     } catch {
+      if (requestId !== requestIdRef.current) {
+        return;
+      }
       setError("Failed to hash the file in your browser.");
     } finally {
-      setLoading(false);
+      if (requestId === requestIdRef.current) {
+        setLoading(false);
+      }
     }
   };
 

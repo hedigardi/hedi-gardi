@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import CommandPalette, {
   type PaletteAction,
 } from "./components/CommandPalette";
 import HashLab from "./components/HashLab";
 import IdentityProof from "./components/IdentityProof";
+import { useFocusTrap } from "./hooks/useFocusTrap";
 import { projects } from "./data/projects";
 
 type FeeData = {
@@ -108,20 +109,24 @@ function scrollToId(id: string): void {
 
 export default function App() {
   const [paletteOpen, setPaletteOpen] = useState(false);
-  const [lightMode, setLightMode] = useState(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
+  const [lightMode, setLightMode] = useState(false);
 
+  useLayoutEffect(() => {
     try {
-      return window.localStorage.getItem("theme") === "light";
+      if (window.localStorage.getItem("theme") === "light") {
+        setLightMode(true);
+      }
     } catch {
-      return false;
+      /* no-op — default dark stays */
     }
-  });
+  }, []);
   const [fees, setFees] = useState<FeeData | null>(null);
   const [imageOpen, setImageOpen] = useState(false);
   const [imageClosing, setImageClosing] = useState(false);
+  const imageModalRef = useRef<HTMLDivElement>(null);
+  const imageModalCloseRef = useRef<HTMLButtonElement>(null);
+
+  useFocusTrap(imageModalRef, imageOpen, imageModalCloseRef);
 
   const openImageModal = () => {
     setImageClosing(false);
@@ -129,10 +134,12 @@ export default function App() {
   };
 
   const closeImageModal = () => {
-    if (!imageOpen || imageClosing) {
-      return;
-    }
-    setImageClosing(true);
+    setImageClosing((currentlyClosing) => {
+      if (currentlyClosing) {
+        return currentlyClosing;
+      }
+      return true;
+    });
   };
 
   useEffect(() => {
@@ -272,7 +279,7 @@ export default function App() {
           >
             <img
               className="hero__avatar"
-              src="/assets/images/portrait.png"
+              src="/assets/images/portrait.jpg"
               alt="Portrait of Hedi Gardi"
             />
           </button>
@@ -440,6 +447,7 @@ export default function App() {
 
       {imageOpen ? (
         <div
+          ref={imageModalRef}
           className={`image-modal ${imageClosing ? "image-modal--closing" : ""}`}
           role="dialog"
           aria-modal="true"
@@ -453,6 +461,7 @@ export default function App() {
           />
           <figure className="image-modal__content">
             <button
+              ref={imageModalCloseRef}
               className="image-modal__close"
               type="button"
               aria-label="Close image preview"
@@ -462,7 +471,7 @@ export default function App() {
             </button>
             <img
               className="image-modal__image"
-              src="/assets/images/portrait.png"
+              src="/assets/images/portrait.jpg"
               alt="Portrait of Hedi Gardi enlarged"
             />
           </figure>
