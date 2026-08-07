@@ -11,13 +11,15 @@ export const projects: Project[] = [
   {
     name: "FjordSync",
     description:
-      "A SaaS converter that transforms Stripe balance transaction CSV exports into import-ready accounting files for Norwegian ERP workflows like Fiken and Tripletex.",
+      "A Next.js SaaS that converts Stripe balance transaction CSV exports into ERP-ready accounting files for Norwegian workflows, with AAL2 MFA, admin controls, and robust export logic for Fiken and Tripletex.",
     stack: [
       "Next.js",
       "TypeScript",
       "JavaScript",
       "Prisma",
-      "MySQL",
+      "PostgreSQL",
+      "Supabase",
+      "Docker",
       "Vitest",
       "Playwright",
     ],
